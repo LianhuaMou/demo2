@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.example.demo2.mapper.user.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo2.model.user.UserInfo">
+    <id column="USERNAME" jdbcType="VARCHAR" property="username" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="USER_ID" jdbcType="DECIMAL" property="userId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from TEST_USER
+    where USERNAME = #{username,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo2.model.user.UserInfo">
+    insert into TEST_USER (USERNAME, PASSWORD, USER_ID
+      )
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{userId,jdbcType=DECIMAL}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo2.model.user.UserInfo">
+    update TEST_USER
+    set PASSWORD = #{password,jdbcType=VARCHAR},
+      USER_ID = #{userId,jdbcType=DECIMAL}
+    where USERNAME = #{username,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select USERNAME, PASSWORD, USER_ID
+    from TEST_USER
+    where USERNAME = #{username,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select USERNAME, PASSWORD, USER_ID
+    from TEST_USER
+  </select>
+  <resultMap id="BaseResultMap" type="com.example.demo2.model.user.UserInfo">
+    <result column="USERNAME" jdbcType="VARCHAR" property="username" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="USER_ID" jdbcType="DECIMAL" property="userId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.demo2.model.user.UserInfo">
+    insert into TEST_USER (USERNAME, PASSWORD, USER_ID
+      )
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{userId,jdbcType=DECIMAL}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select USERNAME, PASSWORD, USER_ID
+    from TEST_USER
+  </select>
+</mapper>
