@@ -42,10 +42,4 @@ public class DemoController {
         return userInfoService.selectAll();
     }
 
-    @RequestMapping("/getAllUser")//设置请求
-    @ResponseBody//json返回
-    public List<UserInfo> getAllUser(){
-        return userInfoService.getAllUser();
-    }
-
 }
